@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<main class="auth-layout">
+    <div class="auth-container">
+        <h1>Welcome back</h1>
+        
+        <form id="login-form" action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email adress</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-options">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn-primary btn-full">Sign In</button>
+        </form>
+        <p class="auth-switch">
+            Don't have an account? <a href="/signup">Get Started</a>
+        </p>
+    </div>
+    <aside class="auth-promo">
+        <h2>Continue learning</h2>
+        <ul class="stats-list">
+            <li><strong>150+</strong> <span>Courses</span></li>
+            </ul>
+    </aside>
+</main>
+
+<%- include('../partials/footer') %>
