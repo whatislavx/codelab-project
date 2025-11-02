@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+
+<main class="courses-page">
+    <div class="container">
+        <h1>Our Courses</h1>
+        
+        <div class="courses-layout">
+
+            <aside class="course-filters">
+                <nav class="filter-categories">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#" class="active">All Courses</a></li>
+                        <li><a href="#">Frontend</a></li>
+                        </ul>
+                </nav>
+                
+                <form class="filter-sort">
+                    <label for="sort-by">Sort by</label>
+                    <select id="sort-by" name="sort-by">
+                        <option value="popular">Most Popular</option>
+                        </select>
+                </form>
+            </aside>
+
+            <section class="course-grid">
+                
+                <% courses.forEach(course => { %>
+                
+                    <article class="course-card">
+                        <img src="<%= course.img %>" alt="<%= course.title %> course banner">
+                        <div class="card-content">
+                            <span class="course-level"><%= course.level %></span>
+                            <h3><%= course.title %></h3>
+                            <p><%= course.subtitle %></p>
+                            <div class="course-rating"><%= course.rating %> (<%= course.reviewsCount %> reviews)</div>
+                            <div class="course-price"><%= course.price %></div>
+                            
+                            <a href="/course/<%= course.id %>" class="btn-details">View details</a>
+                        </div>
+                    </article>
+
+                <% }) %> </section>
+        </div>
+
+        <nav class="pagination" aria-label="Course pagination">
+            <ul>
+                <li><a href="#">&lt; Previous</a></li>
+                <li><a href="#" class="active" aria-current="page">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">Next &gt;</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

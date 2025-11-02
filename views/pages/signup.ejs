@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+<main class="auth-layout">
+    <div class="auth-container">
+        <h1>Get Started</h1>
+        <p>Create your account and start learning today</p>
+        
+        <form id="signup-form" action="/register" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email adress</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <fieldset class="payment-details">
+                <legend>Payment Details</legend>
+                <div class="form-group">
+                    <label for="card-number">Card number</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="**** **** **** ****">
+                </div>
+                </fieldset>
+            <button type="submit" class="btn-primary btn-full">Register</button>
+        </form>
+        <p class="auth-switch">
+            Already have an account? <a href="/login">Sign in</a>
+        </p>
+    </div>
+    
+    <aside class="auth-promo">
+        <h2>Begin your journey</h2>
+        </aside>
+</main>
+
+<%- include('../partials/footer') %>

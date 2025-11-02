@@ -1,0 +1,71 @@
+<%- include('../partials/header') %>
+
+<main>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-i18n-key="hero.title">Learn IT Skills Online with Expert Instructors</h1>
+                <p data-i18n-key="hero.subtitle">
+                    Master in-demand programming skills with hands-on projects, expert guidance,
+                    and industry-recognized certificates. Start your tech career today.
+                </p>
+                <a href="/courses" class="btn-primary" data-i18n-key="hero.button">Browse courses</a>
+            </div>
+            <div class="hero-image">
+                <picture>
+                    <img src="/assets/images/hero-illustration.png" alt="Illustation of a developer working at a computer">
+                </picture>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 data-i18n-key="features.title">Why should you study with us?</h2>
+            <ul class="features-grid">
+                <li>
+                    <h3>Industry Certificates</h3>
+                    <p>Earn recognized certificates upon course completion.</p>
+                </li>
+                <li>
+                    <h3>Flexible Schedule</h3>
+                    <p>Learn at your own pace and schedule.</p>
+                </li>
+                <li>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <h2>Popular Categories</h2>
+            <p>Choose your learning path</p>
+            <ul class="categories-grid">
+                <li><a href="/courses?category=frontend">Frontend</a></li>
+                <li><a href="/courses?category=backend">Backend</a></li>
+                <li><a href="/courses?category=programming">Programming</a></li>
+                <li><a href="/courses?category=datascience">Data Science</a></li>
+                <li><a href="/courses?category=cybersecurity">Cybersecurity</a></li>
+                <li><a href="/courses?category=mobile">Mobile Development</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <ul>
+                <li><strong>5,000+</strong> <span>Students</span></li>
+                <li><strong>150+</strong> <span>Courses</span></li>
+                <li><strong>50+</strong> <span>Instructors</span></li>
+                <li><strong>95%</strong> <span>Success rate</span></li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+
+<%- include('../partials/footer') %>
