@@ -4,8 +4,6 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// --- НАША "БАЗА ДАНИХ" КУРСІВ ---
-// Усі дані зберігаються тут, а не в HTML
 const coursesData = [
     {
         id: 'web-dev-fundamentals',
@@ -80,68 +78,54 @@ const coursesData = [
         whatYouWillLearn: ['Common Cyber Threats', 'Network Security', 'Application Security', 'Cryptography Basics']
     }
 ];
-// ------------------------------------
 
-// Налаштування "рушія" EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Налаштування папки 'public' для роздачі CSS, JS та зображень
-// Усі посилання на /assets/... тепер будуть працювати
 app.use(express.static(path.join(__dirname, 'public')));
 
-// --- МАРШРУТИ (Посилання на сторінки) ---
 
-// Головна сторінка
+
 app.get('/', (req, res) => {
-    // "Рендерить" (показує) файл views/pages/index.ejs
     res.render('pages/index');
 });
 
-// Сторінка "Our Courses"
+
 app.get('/courses', (req, res) => {
-    // "Рендерить" сторінку і "передає" в неї всі дані про курси
     res.render('pages/courses', {
-        courses: coursesData // "courses" - це ім'я змінної, яку ми використаємо в EJS
+        courses: coursesData
     });
 });
 
-// Сторінка "Instructors"
+
 app.get('/instructors', (req, res) => {
     res.render('pages/instructors');
 });
 
-// Сторінка "Login"
+
 app.get('/login', (req, res) => {
     res.render('pages/login');
 });
 
-// Сторінка "Sign Up"
+
 app.get('/signup', (req, res) => {
     res.render('pages/signup');
 });
 
-// --- !!! ДИНАМІЧНА СТОРІНКА КУРСУ !!! ---
-// :id - це "змінна" в URL. Наприклад, /course/javascript-beginners
+
 app.get('/course/:id', (req, res) => {
     const courseId = req.params.id;
-    // Шукаємо в нашій "базі даних" курс з таким ID
     const course = coursesData.find(c => c.id === courseId);
 
     if (course) {
-        // Якщо курс знайдено, "рендеримо" шаблон 'course-details'
-        // і "передаємо" в нього дані ТІЛЬКИ ЦЬОГО ОДНОГО курсу
         res.render('pages/course-details', {
-            course: course // "course" - ім'я змінної в EJS
+            course: course 
         });
     } else {
-        // Якщо курс не знайдено, можна показати 404
         res.status(404).send('Course not found');
     }
 });
-// ------------------------------------
 
-// Запуск сервера
 app.listen(PORT, () => {
     console.log(`Сервер запущено! Відкрийте http://localhost:${PORT} у вашому браузері.`);
 });
