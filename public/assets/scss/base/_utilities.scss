@@ -1,0 +1,12 @@
+// Відступи
+.mb-1 { margin-bottom: toRem(8px); }
+.mb-2 { margin-bottom: toRem(16px); }
+.mb-3 { margin-bottom: toRem(24px); }
+.mb-4 { margin-bottom: toRem(32px); }
+.mb-5 { margin-bottom: toRem(48px); }
+
+// Друк
+@media print {
+  .site-header, .site-footer, .btn-primary, .btn-secondary { display: none !important; }
+  body { color: #000; }
+}

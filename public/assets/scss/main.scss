@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+// 0. Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+// 1. Abstracts
+@use 'abstracts/variables' as *;
+@use 'abstracts/functions' as *;
+@use 'abstracts/mixins' as *;
+
+// 2. Base
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/animations';
+@use 'base/utilities';
+
+// 3. Layout
+@use 'layout/grid';
+@use 'layout/header';
+@use 'layout/footer';
+
+// 4. Components
+@use 'components/buttons';
+@use 'components/cards';
+
+// 5. Pages
+@use 'pages/home';
+@use 'pages/courses';
+@use 'pages/course-details';
+@use 'pages/instructors';
+@use 'pages/auth';

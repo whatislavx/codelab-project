@@ -1,0 +1,28 @@
+.site-header {
+  background-color: $color-white;
+  border-bottom: 1px solid #E5E7EB;
+  padding: toRem(16px) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .container { @include flex(space-between, center); }
+  .logo img { height: 32px; }
+
+  .main-nav {
+    display: none;
+    @include respond-to('md') {
+      display: block;
+      ul {
+        @include flex(center, center);
+        gap: toRem(32px);
+        a { font-weight: 500; &:hover { color: $color-primary; } }
+      }
+    }
+  }
+
+  .header-buttons {
+    @include flex(center, center);
+    gap: toRem(12px);
+  }
+}

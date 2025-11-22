@@ -1,0 +1,100 @@
+<%- include('../partials/header') %>
+
+<main class="course-details-page">
+    <div class="container">
+
+        <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <span>&gt;</span>
+            <a href="/courses">Courses</a>
+            <span>&gt;</span>
+            <span class="current"><%= course.title %></span>
+        </nav>
+
+        <section class="course-hero">
+            <div class="hero-content">
+                <h1><%= course.title %></h1>
+                <p><%= course.subtitle %></p>
+                
+                <div class="course-meta">
+                    <span class="rating">
+                        <%= course.rating %> (<%= course.reviewsCount %> reviews)
+                    </span>
+                    <span class="duration">Duration: <%= course.duration %></span>
+                    <span class="instructor">
+                        Instructor: <a href="/instructors#<%= course.instructor.id %>"><%= course.instructor.name %></a>
+                    </span>
+                </div>
+                
+                <a href="/signup" class="btn-primary">Enroll Now</a>
+            </div>
+            
+            <div class="hero-image">
+                <img src="<%= course.img %>" alt="<%= course.title %>">
+            </div>
+        </section>
+
+        <div class="course-layout">
+            
+            <div class="course-content">
+                
+                <nav class="course-tabs">
+                    <ul>
+                        <li><a href="#overview" class="active">Overview</a></li>
+                        <li><a href="#instructor">Instructor</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </nav>
+
+                <div class="tab-content">
+                    
+                    <div id="overview" class="tab-pane active">
+                        <h2>About this course</h2>
+                        <p><%= course.description %></p>
+
+                        <h2>What you'll learn</h2>
+                        <ul class="learn-list">
+                            <% course.whatYouWillLearn.forEach(item => { %>
+                                <li><%= item %></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                    
+                    <div id="instructor" class="tab-pane">
+                        <article class="instructor-card-detailed">
+                            <picture>
+                                <img src="<%= course.instructor.img %>" alt="<%= course.instructor.name %>">
+                            </picture>
+                            <div class="instructor-info">
+                                <h3><%= course.instructor.name %></h3>
+                                <h4><%= course.instructor.title %></h4>
+                                <a href="/instructors#<%= course.instructor.id %>" class="btn-secondary">View Profile</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div id="reviews" class="tab-pane">
+                        <h2>Student Reviews</h2>
+                        <p>Reviews will be displayed here.</p>
+                        </div>
+
+                </div>
+            </div>
+
+            <aside class="enrollment-card">
+                <h2><%= course.price %></h2>
+                <a href="/signup" class="btn-primary btn-full">Enroll Now</a>
+                
+                <h3>This course includes:</h3>
+                <ul class="includes-list">
+                    <% course.courseIncludes.forEach(item => { %>
+                        <li><%= item %></li>
+                    <% }) %>
+                </ul>
+            </aside>
+
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

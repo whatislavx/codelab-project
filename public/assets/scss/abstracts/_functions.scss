@@ -1,0 +1,11 @@
+@use "sass:math";
+
+// Конвертер px в rem
+@function toRem($px) {
+  @return math.div($px, 16px) * 1rem;
+}
+
+// Затемнення кольору
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}

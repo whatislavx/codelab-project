@@ -1,0 +1,65 @@
+@use "sass:math";
+@use "variables" as *;
+
+// Адаптив (Media Queries)
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Невідомий брейкпоінт: #{$breakpoint}.";
+  }
+}
+
+// Flexbox Helper
+@mixin flex($justify: flex-start, $align: stretch, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// Typography Helper
+@mixin text-style($size, $weight: 400, $color: $color-text-main) {
+  font-size: toRem($size);
+  font-weight: $weight;
+  color: $color;
+}
+
+// Custom Grid System (Бонус)
+@mixin make-container() {
+  width: 100%;
+  padding-right: ($gutter * 0.5);
+  padding-left: ($gutter * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  
+  @include respond-to('sm') { max-width: 540px; }
+  @include respond-to('md') { max-width: 720px; }
+  @include respond-to('lg') { max-width: 960px; }
+  @include respond-to('xl') { max-width: 1140px; }
+}
+
+@mixin make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -($gutter * 0.5);
+  margin-left: -($gutter * 0.5);
+}
+
+@mixin make-col($size: false, $columns: 12) {
+  position: relative;
+  width: 100%;
+  padding-right: ($gutter * 0.5);
+  padding-left: ($gutter * 0.5);
+
+  @if $size {
+    flex: 0 0 percentage(math.div($size, $columns));
+    max-width: percentage(math.div($size, $columns));
+  } @else {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+}

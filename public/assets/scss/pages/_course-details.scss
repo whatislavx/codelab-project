@@ -1,0 +1,38 @@
+.course-hero {
+  background-color: $color-secondary;
+  color: white;
+  padding: 64px 0;
+  h1 { color: white; }
+  .course-meta { margin-top: 24px; display: flex; gap: 24px; flex-wrap: wrap; }
+  a { color: #60A5FA; }
+}
+
+.course-body-layout {
+  display: grid;
+  gap: 48px;
+  margin: 48px auto 64px;
+  @include respond-to('lg') { grid-template-columns: 2fr 1fr; }
+}
+
+.tabs-nav ul {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 32px;
+  li a {
+    display: block; padding: 12px 24px;
+    border-bottom: 2px solid transparent;
+    &.active { border-color: $color-primary; color: $color-primary; font-weight: 600; }
+  }
+}
+
+.enroll-sidebar {
+  background: white;
+  border: 1px solid #eee;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  .price-value { font-size: 48px; font-weight: 800; color: $color-success; }
+}

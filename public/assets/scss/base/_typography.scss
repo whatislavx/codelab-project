@@ -1,0 +1,12 @@
+h1, h2, h3, h4, h5, h6 {
+  color: $color-secondary;
+  font-weight: 700;
+  margin-bottom: toRem(16px);
+  line-height: 1.2;
+}
+
+h1 { @include text-style(40px, 800, $color-secondary); @include respond-to('lg') { font-size: toRem(48px); } }
+h2 { @include text-style(30px, 700, $color-secondary); @include respond-to('lg') { font-size: toRem(36px); } }
+h3 { @include text-style(20px, 600, $color-secondary); @include respond-to('lg') { font-size: toRem(24px); } }
+
+p { margin-bottom: toRem(16px); color: $color-text-light; }

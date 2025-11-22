@@ -1,0 +1,53 @@
+.hero {
+  padding: 64px 0;
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+    @include respond-to('lg') { grid-template-columns: 1fr 1fr; }
+  }
+}
+
+.features {
+  padding: 80px 0;
+  text-align: center;
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 48px;
+    @include respond-to('md') { grid-template-columns: repeat(3, 1fr); }
+    
+    li { padding: 24px; background: #fff; border-radius: 12px; }
+    h3 { font-size: 18px; }
+  }
+}
+
+.categories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  li a {
+    display: block;
+    padding: 12px 24px;
+    background: $color-bg-light;
+    border-radius: 30px;
+    font-weight: 600;
+    &:hover { background: $color-primary; color: white; }
+  }
+}
+
+.stats {
+  background-color: $color-primary;
+  padding: 64px 0;
+  color: white;
+  ul {
+    @include flex(space-around, center);
+    flex-wrap: wrap;
+    gap: 32px;
+    li strong { display: block; font-size: 48px; font-weight: 800; }
+  }
+}
