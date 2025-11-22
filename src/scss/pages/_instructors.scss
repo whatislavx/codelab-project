@@ -1,0 +1,140 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.instructors-page {
+  padding: 64px 0;
+  
+  .instructors-header { 
+    text-align: center; 
+    margin-bottom: 64px;
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: $color-text-light;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+  
+  .instructors-grid {
+    display: grid;
+    gap: 32px;
+    @include respond-to('md') { 
+      grid-template-columns: 1fr 1fr; 
+    }
+    @include respond-to('lg') { 
+      grid-template-columns: 1fr 1fr; 
+    }
+  }
+  
+  .instructor-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    picture {
+      display: block;
+      margin-bottom: 24px;
+    }
+    
+    img { 
+      width: 120px; 
+      height: 120px; 
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+    
+    .instructor-info {
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+        color: $color-secondary;
+      }
+      
+      h3 {
+        font-size: 1rem;
+        color: $color-text-light;
+        font-weight: 400;
+        margin-bottom: 16px;
+      }
+      
+      .instructor-stats {
+        @include flex(center, center);
+        gap: 16px;
+        margin-bottom: 16px;
+        font-size: 14px;
+        color: $color-text-light;
+        flex-wrap: wrap;
+        
+        span:first-child {
+          color: $color-warning;
+          font-weight: 600;
+        }
+      }
+      
+      .instructor-skills {
+        @include flex(center, center);
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+        
+        .skill-tag {
+          padding: 4px 12px;
+          background: $color-primary;
+          color: white;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      
+      .instructor-bio {
+        font-size: 14px;
+        line-height: 1.6;
+        color: $color-text-main;
+        text-align: left;
+        margin-top: 16px;
+      }
+    }
+  }
+  
+  .pagination {
+    margin-top: 64px;
+    ul {
+      @include flex(center, center);
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      a {
+        padding: 8px 16px;
+        border: 1px solid #E5E7EB;
+        border-radius: 4px;
+        color: $color-text-main;
+        transition: all 0.3s;
+        
+        &.active, &:hover { 
+          background: $color-primary; 
+          color: white; 
+          border-color: $color-primary; 
+        }
+      }
+    }
+  }
+}

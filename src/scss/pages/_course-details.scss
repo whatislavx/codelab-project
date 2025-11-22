@@ -1,0 +1,382 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.course-details-page {
+  .course-hero {
+    background-color: $color-secondary;
+    color: white;
+    padding: 64px 0;
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      @include respond-to('lg') { 
+        grid-template-columns: 1fr 400px; 
+        align-items: start;
+      }
+    }
+    
+    .hero-content {
+      h1 { 
+        color: white; 
+        font-size: 2.5rem;
+        margin-bottom: 16px;
+      }
+      p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.125rem;
+        margin-bottom: 24px;
+      }
+    }
+    
+    .course-level-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #F59E0B;
+      color: white;
+      margin-bottom: 16px;
+    }
+    
+    .course-meta { 
+      margin-top: 24px; 
+      @include flex(flex-start, center);
+      gap: 24px; 
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .hero-enrollment-card {
+      background: #F3F4F6;
+      padding: 32px;
+      border-radius: 12px;
+      height: fit-content;
+      
+      .enrollment-price {
+        @include flex(space-between, center);
+        margin-bottom: 24px;
+        span {
+          font-size: 16px;
+          color: $color-text-main;
+        }
+        .price-value {
+          font-size: 36px;
+          font-weight: 800;
+          color: $color-success;
+        }
+      }
+      
+      .btn-enroll {
+        width: 100%;
+        margin-bottom: 32px;
+        padding: 16px;
+        font-size: 18px;
+      }
+      
+      .course-details-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+          padding: 12px 0;
+          border-bottom: 1px solid #E5E7EB;
+          color: $color-text-main;
+          font-size: 14px;
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+  
+  .course-tabs-nav {
+    background: white;
+    border-bottom: 1px solid #E5E7EB;
+    margin-top: 0;
+    
+    ul {
+      @include flex(center, center);
+      gap: 0;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        a {
+          display: block;
+          padding: 16px 32px;
+          color: $color-text-light;
+          font-weight: 500;
+          border-bottom: 3px solid transparent;
+          transition: all 0.3s;
+          
+          &.active {
+            color: $color-primary;
+            border-bottom-color: $color-primary;
+            font-weight: 600;
+          }
+          
+          &:hover {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+  
+  .course-content-area {
+    padding: 48px 0;
+    background: white;
+    
+    .tab-content {
+      display: none;
+      
+      &.active {
+        display: block;
+      }
+      
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 24px;
+        color: $color-secondary;
+      }
+      
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: $color-text-main;
+        margin-bottom: 32px;
+      }
+    }
+    
+    .instructor-preview {
+      @include flex(flex-start, flex-start);
+      gap: 24px;
+      margin: 32px 0;
+      padding: 24px;
+      background: #F9FAFB;
+      border-radius: 12px;
+      
+      img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      
+      .instructor-preview-info {
+        flex: 1;
+        
+        h3 {
+          font-size: 20px;
+          margin-bottom: 4px;
+        }
+        
+        p {
+          color: $color-text-light;
+          margin-bottom: 12px;
+        }
+        
+        .instructor-stats {
+          @include flex(flex-start, center);
+          gap: 16px;
+          margin-bottom: 16px;
+          font-size: 14px;
+          color: $color-text-light;
+          
+          span:first-child {
+            color: $color-warning;
+            font-weight: 600;
+          }
+        }
+        
+        .instructor-skills {
+          @include flex(flex-start, center);
+          flex-wrap: wrap;
+          gap: 8px;
+          
+          .skill-tag {
+            padding: 4px 12px;
+            background: $color-primary;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    
+    .learn-list {
+      list-style: none;
+      padding: 0;
+      margin: 32px 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      @include respond-to('md') {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      li {
+        @include flex(flex-start, flex-start);
+        gap: 16px;
+        padding: 16px;
+        background: #F9FAFB;
+        border-radius: 8px;
+        
+        .learn-icon {
+          width: 24px;
+          height: 24px;
+          background: $color-primary;
+          border-radius: 4px;
+          flex-shrink: 0;
+        }
+        
+        div {
+          strong {
+            display: block;
+            font-size: 16px;
+            color: $color-secondary;
+            margin-bottom: 4px;
+          }
+          span {
+            font-size: 14px;
+            color: $color-text-light;
+          }
+        }
+      }
+    }
+    
+    .curriculum-summary {
+      font-size: 16px;
+      color: $color-text-light;
+      margin-bottom: 24px;
+    }
+    
+    .curriculum-modules {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      .curriculum-module {
+        @include flex(flex-start, center);
+        gap: 16px;
+        padding: 20px;
+        background: #F3F4F6;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        
+        .module-check {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: $color-primary;
+          color: white;
+          @include flex(center, center);
+          font-weight: 600;
+          flex-shrink: 0;
+        }
+        
+        .module-number {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: white;
+          color: $color-text-main;
+          @include flex(center, center);
+          font-weight: 600;
+          flex-shrink: 0;
+        }
+        
+        .module-info {
+          flex: 1;
+          
+          h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: $color-secondary;
+          }
+          
+          .module-duration {
+            font-size: 14px;
+            color: $color-text-light;
+          }
+        }
+      }
+    }
+    
+    .reviews-summary {
+      font-size: 16px;
+      color: $color-text-light;
+      margin-bottom: 24px;
+    }
+    
+    .reviews-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      .review-item {
+        @include flex(flex-start, flex-start);
+        gap: 16px;
+        padding: 24px 0;
+        border-bottom: 1px solid #E5E7EB;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        .review-avatar {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: $color-primary;
+          color: white;
+          @include flex(center, center);
+          font-weight: 600;
+          font-size: 18px;
+          flex-shrink: 0;
+        }
+        
+        .review-content {
+          flex: 1;
+          
+          .review-header {
+            @include flex(flex-start, center);
+            gap: 12px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            
+            h4 {
+              font-size: 16px;
+              margin: 0;
+              color: $color-secondary;
+            }
+            
+            .review-rating {
+              color: $color-warning;
+              font-size: 14px;
+            }
+            
+            .review-date {
+              font-size: 14px;
+              color: $color-text-light;
+            }
+          }
+          
+          p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: $color-text-main;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,43 +4,34 @@
     <div class="container">
         <h1>Our Courses</h1>
         
+        <div class="courses-filters-top">
+            <div class="filter-dropdown">
+                <label for="category-select">All Courses</label>
+                <select name="category" id="category-select" form="filters-form" onchange="document.getElementById('filters-form').submit()">
+                    <option value="all" <%= selectedCategory === 'all' ? 'selected' : '' %>>All Courses</option>
+                    <option value="frontend" <%= selectedCategory === 'frontend' ? 'selected' : '' %>>Frontend</option>
+                    <option value="backend" <%= selectedCategory === 'backend' ? 'selected' : '' %>>Backend</option>
+                    <option value="programming" <%= selectedCategory === 'programming' ? 'selected' : '' %>>Programming</option>
+                    <option value="datascience" <%= selectedCategory === 'datascience' ? 'selected' : '' %>>Data Science</option>
+                    <option value="cybersecurity" <%= selectedCategory === 'cybersecurity' ? 'selected' : '' %>>Cybersecurity</option>
+                    <option value="mobile" <%= selectedCategory === 'mobile' ? 'selected' : '' %>>Mobile Development</option>
+                    <option value="devops" <%= selectedCategory === 'devops' ? 'selected' : '' %>>DevOps</option>
+                </select>
+            </div>
+            <div class="filter-dropdown">
+                <label for="sort-select">Most Popular</label>
+                <select name="sort" id="sort-select" form="filters-form" onchange="document.getElementById('filters-form').submit()">
+                    <option value="popular" <%= selectedSort === 'popular' ? 'selected' : '' %>>Most Popular</option>
+                    <option value="rated" <%= selectedSort === 'rated' ? 'selected' : '' %>>Highest Rated</option>
+                    <option value="price-lh" <%= selectedSort === 'price-lh' ? 'selected' : '' %>>Price: Low to High</option>
+                    <option value="price-hl" <%= selectedSort === 'price-hl' ? 'selected' : '' %>>Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+        
+        <form id="filters-form" action="/courses" method="GET" style="display: none;"></form>
+        
         <div class="courses-layout">
-
-            <aside class="course-filters">
-                
-                <form id="filters-form" action="/courses" method="GET">
-
-                    <div class="filter-group">
-                        <label for="category-select">Filter by</label>
-                        <select name="category" id="category-select" onchange="this.form.submit()">
-                            
-                            <option value="all" <%= selectedCategory === 'all' ? 'selected' : '' %>>All courses</option>
-                            <option value="frontend" <%= selectedCategory === 'frontend' ? 'selected' : '' %>>Frontend</option>
-                            <option value="backend" <%= selectedCategory === 'backend' ? 'selected' : '' %>>Backend</option>
-                            <option value="programming" <%= selectedCategory === 'programming' ? 'selected' : '' %>>Programming</option>
-                            <option value="datascience" <%= selectedCategory === 'datascience' ? 'selected' : '' %>>Data science</option>
-                            <option value="cybersecurity" <%= selectedCategory === 'cybersecurity' ? 'selected' : '' %>>Cybersecurity</option>
-                            <option value="mobile" <%= selectedCategory === 'mobile' ? 'selected' : '' %>>Mobile Development</option>
-                            <option value="devops" <%= selectedCategory === 'devops' ? 'selected' : '' %>>DevOps</option>
-
-                        </select>
-                    </div>
-
-                    <div class="filter-group">
-                        <label for="sort-select">Sort by</label>
-                        <select name="sort" id="sort-select" onchange="this.form.submit()">
-                            
-                            <option value="popular" <%= selectedSort === 'popular' ? 'selected' : '' %>>Most popular</option>
-                            <option value="rated" <%= selectedSort === 'rated' ? 'selected' : '' %>>Highest rated</option>
-                            <option value="price-lh" <%= selectedSort === 'price-lh' ? 'selected' : '' %>>price: From Low to High</option>
-                            <option value="price-hl" <%= selectedSort === 'price-hl' ? 'selected' : '' %>>price: from high to low</option>
-                            
-                        </select>
-                    </div>
-
-                </form>
-            </aside>
-
 
             <section class="course-grid">
                 

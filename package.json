@@ -2,9 +2,9 @@
   "name": "codelab-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
     "scss": "sass src/scss/main.scss public/assets/css/main.css --watch"
   },
   "keywords": [],
@@ -16,6 +16,6 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "sass": "^1.94.2"
+    "sass": "^1.81.0"
   }
 }

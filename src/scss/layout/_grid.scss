@@ -1,0 +1,35 @@
+@use '../abstracts/mixins' as *; // <--- ДОДАНО: Явне підключення міксінів
+@use '../abstracts/variables' as *; // <--- Не забуваємо про змінні, якщо вони використовуються
+
+// Використання нашого кастомного міксіна для створення класів сітки
+.container {
+  @include make-container();
+}
+
+.row {
+  @include make-row();
+}
+
+// Генерація колонок (col-1 ... col-12)
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    @include make-col($i);
+  }
+}
+
+// Адаптивні колонки (col-md-6 і т.д.)
+@include respond-to('md') {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      @include make-col($i);
+    }
+  }
+}
+
+@include respond-to('lg') {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} {
+      @include make-col($i);
+    }
+  }
+}

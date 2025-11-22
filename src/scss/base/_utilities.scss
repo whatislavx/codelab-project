@@ -1,3 +1,5 @@
+@use '../abstracts/functions' as *;
+
 // Відступи
 .mb-1 { margin-bottom: toRem(8px); }
 .mb-2 { margin-bottom: toRem(16px); }

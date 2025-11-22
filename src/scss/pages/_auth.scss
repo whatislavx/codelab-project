@@ -1,0 +1,201 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.auth-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: calc(100vh - 73px);
+  @include respond-to('lg') { 
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+
+.auth-container {
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+  
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+  
+  > p {
+    text-align: center;
+    color: $color-text-light;
+    margin-bottom: 32px;
+  }
+  
+  form {
+    margin-top: 32px;
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      @include respond-to('sm') {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      label { 
+        display: block; 
+        margin-bottom: 8px; 
+        font-weight: 500; 
+        color: $color-text-main;
+      }
+      input {
+        width: 100%; 
+        padding: 12px 16px;
+        border: 1px solid #D1D5DB; 
+        border-radius: 6px;
+        font-size: 16px;
+        &:focus { 
+          outline: none; 
+          border-color: $color-primary; 
+          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); 
+        }
+        &::placeholder {
+          color: #9CA3AF;
+        }
+      }
+    }
+    
+    .form-options {
+      @include flex(space-between, center);
+      margin-bottom: 24px;
+      
+      .checkbox-group {
+        @include flex(flex-start, center);
+        gap: 8px;
+        
+        input[type="checkbox"] {
+          width: auto;
+        }
+        
+        label {
+          margin: 0;
+          font-weight: 400;
+          cursor: pointer;
+        }
+      }
+      
+      a {
+        color: $color-primary;
+        font-size: 14px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    
+    fieldset.payment-details {
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 24px 0;
+      
+      legend {
+        padding: 0 12px;
+        font-weight: 600;
+        color: $color-text-main;
+      }
+    }
+  }
+  
+  .auth-switch {
+    text-align: center;
+    margin-top: 24px;
+    color: $color-text-light;
+    
+    a {
+      color: $color-primary;
+      font-weight: 600;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.auth-promo {
+  display: none;
+  @include respond-to('lg') {
+    display: flex;
+    background-color: $color-primary;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px;
+    text-align: center;
+    
+    h2 { 
+      color: white; 
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+    
+    .stats-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      @include flex(center, center);
+      flex-wrap: wrap;
+      gap: 48px;
+      
+      li {
+        text-align: center;
+        
+        strong {
+          display: block;
+          font-size: 3rem;
+          font-weight: 800;
+          margin-bottom: 8px;
+        }
+        
+        span {
+          font-size: 1rem;
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
+    }
+    
+    .promo-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+      
+      .promo-feature {
+        text-align: left;
+        
+        h3 {
+          color: white;
+          font-size: 1.25rem;
+          margin-bottom: 8px;
+        }
+        
+        p {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.875rem;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

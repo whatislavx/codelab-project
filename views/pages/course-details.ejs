@@ -1,98 +1,144 @@
 <%- include('../partials/header') %>
 
 <main class="course-details-page">
-    <div class="container">
-
-        <nav class="breadcrumbs">
-            <a href="/">Home</a>
-            <span>&gt;</span>
-            <a href="/courses">Courses</a>
-            <span>&gt;</span>
-            <span class="current"><%= course.title %></span>
-        </nav>
-
-        <section class="course-hero">
+    <section class="course-hero">
+        <div class="container">
             <div class="hero-content">
+                <span class="course-level-badge"><%= course.level %></span>
                 <h1><%= course.title %></h1>
                 <p><%= course.subtitle %></p>
                 
                 <div class="course-meta">
                     <span class="rating">
-                        <%= course.rating %> (<%= course.reviewsCount %> reviews)
+                        ★<%= course.rating %> (<%= course.reviewsCount %> reviews)
                     </span>
-                    <span class="duration">Duration: <%= course.duration %></span>
+                    <span class="duration"><%= course.duration %></span>
                     <span class="instructor">
-                        Instructor: <a href="/instructors#<%= course.instructor.id %>"><%= course.instructor.name %></a>
+                        Instructor: <%= course.instructor.name %>
                     </span>
                 </div>
-                
-                <a href="/signup" class="btn-primary">Enroll Now</a>
             </div>
             
-            <div class="hero-image">
-                <img src="<%= course.img %>" alt="<%= course.title %>">
-            </div>
-        </section>
-
-        <div class="course-layout">
-            
-            <div class="course-content">
-                
-                <nav class="course-tabs">
-                    <ul>
-                        <li><a href="#overview" class="active">Overview</a></li>
-                        <li><a href="#instructor">Instructor</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
-                    </ul>
-                </nav>
-
-                <div class="tab-content">
-                    
-                    <div id="overview" class="tab-pane active">
-                        <h2>About this course</h2>
-                        <p><%= course.description %></p>
-
-                        <h2>What you'll learn</h2>
-                        <ul class="learn-list">
-                            <% course.whatYouWillLearn.forEach(item => { %>
-                                <li><%= item %></li>
-                            <% }) %>
-                        </ul>
-                    </div>
-                    
-                    <div id="instructor" class="tab-pane">
-                        <article class="instructor-card-detailed">
-                            <picture>
-                                <img src="<%= course.instructor.img %>" alt="<%= course.instructor.name %>">
-                            </picture>
-                            <div class="instructor-info">
-                                <h3><%= course.instructor.name %></h3>
-                                <h4><%= course.instructor.title %></h4>
-                                <a href="/instructors#<%= course.instructor.id %>" class="btn-secondary">View Profile</a>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div id="reviews" class="tab-pane">
-                        <h2>Student Reviews</h2>
-                        <p>Reviews will be displayed here.</p>
-                        </div>
-
+            <div class="hero-enrollment-card">
+                <div class="enrollment-price">
+                    <span>Price:</span>
+                    <strong class="price-value"><%= course.price %></strong>
                 </div>
-            </div>
-
-            <aside class="enrollment-card">
-                <h2><%= course.price %></h2>
-                <a href="/signup" class="btn-primary btn-full">Enroll Now</a>
-                
-                <h3>This course includes:</h3>
-                <ul class="includes-list">
+                <a href="/signup" class="btn-primary btn-enroll">Enroll now</a>
+                <ul class="course-details-list">
                     <% course.courseIncludes.forEach(item => { %>
                         <li><%= item %></li>
                     <% }) %>
                 </ul>
-            </aside>
+            </div>
+        </div>
+    </section>
 
+    <div class="container">
+        <div class="course-tabs-nav">
+            <ul>
+                <li><a href="#overview" class="tab-link active" data-tab="overview">Overview</a></li>
+                <li><a href="#curriculum" class="tab-link" data-tab="curriculum">Curriculum</a></li>
+                <li><a href="#reviews" class="tab-link" data-tab="reviews">Reviews</a></li>
+            </ul>
+        </div>
+
+        <div class="course-content-area">
+            <div id="overview" class="tab-content active">
+                <h2>About this course</h2>
+                <p><%= course.description %></p>
+
+                <div class="instructor-preview">
+                    <img src="<%= course.instructor.img %>" alt="<%= course.instructor.name %>">
+                    <div class="instructor-preview-info">
+                        <h3><%= course.instructor.name %></h3>
+                        <p><%= course.instructor.title %></p>
+                        <div class="instructor-stats">
+                            <span>★<%= course.instructor.rating || 4.9 %></span>
+                            <span><%= course.instructor.students || '12,500+' %>+ students</span>
+                            <span><%= course.instructor.courses || 8 %> courses</span>
+                        </div>
+                        <div class="instructor-skills">
+                            <% if (course.instructor.skills) { %>
+                                <% course.instructor.skills.forEach(skill => { %>
+                                    <span class="skill-tag"><%= skill %></span>
+                                <% }) %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>What you will learn</h2>
+                <ul class="learn-list">
+                    <% if (course.whatYouWillLearn && course.whatYouWillLearn[0] && typeof course.whatYouWillLearn[0] === 'object') { %>
+                        <% course.whatYouWillLearn.forEach(item => { %>
+                            <li>
+                                <span class="learn-icon"></span>
+                                <div>
+                                    <strong><%= item.title %></strong>
+                                    <span><%= item.description %></span>
+                                </div>
+                            </li>
+                        <% }) %>
+                    <% } else { %>
+                        <% course.whatYouWillLearn.forEach(item => { %>
+                            <li><%= item %></li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            </div>
+
+            <div id="curriculum" class="tab-content">
+                <h2>Course Curriculum</h2>
+                <% if (course.curriculum) { %>
+                    <p class="curriculum-summary"><%= course.curriculum.length %> modules • 20 + hours of content.</p>
+                    <ul class="curriculum-modules">
+                        <% course.curriculum.forEach(module => { %>
+                            <li class="curriculum-module <%= module.completed ? 'completed' : '' %>">
+                                <% if (module.completed) { %>
+                                    <span class="module-check">✓</span>
+                                <% } else { %>
+                                    <span class="module-number"><%= module.number %></span>
+                                <% } %>
+                                <div class="module-info">
+                                    <h3>Module <%= module.number %>: <%= module.title %></h3>
+                                    <span class="module-duration"><%= module.duration %></span>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>Curriculum information coming soon.</p>
+                <% } %>
+            </div>
+
+            <div id="reviews" class="tab-content">
+                <h2>Student Reviews</h2>
+                <% if (course.reviews) { %>
+                    <p class="reviews-summary"><%= course.reviewsCount %> reviews • Average rating <%= course.rating %>/5</p>
+                    <ul class="reviews-list">
+                        <% course.reviews.forEach(review => { %>
+                            <li class="review-item">
+                                <div class="review-avatar"><%= review.author.charAt(0) %></div>
+                                <div class="review-content">
+                                    <div class="review-header">
+                                        <h4><%= review.author %></h4>
+                                        <div class="review-rating">
+                                            <% for (let i = 0; i < review.rating; i++) { %>
+                                                <span class="star">★</span>
+                                            <% } %>
+                                        </div>
+                                        <span class="review-date"><%= review.date %></span>
+                                    </div>
+                                    <p><%= review.text %></p>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No reviews yet.</p>
+                <% } %>
+            </div>
         </div>
     </div>
 </main>

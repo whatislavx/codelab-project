@@ -1,10 +1,12 @@
 @use "sass:math";
+@use "sass:map";
 @use "variables" as *;
+@use "functions" as *;
 
 // Адаптив (Media Queries)
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
       @content;
     }
   } @else {
@@ -55,8 +57,8 @@
   padding-left: ($gutter * 0.5);
 
   @if $size {
-    flex: 0 0 percentage(math.div($size, $columns));
-    max-width: percentage(math.div($size, $columns));
+    flex: 0 0 math.percentage(math.div($size, $columns));
+    max-width: math.percentage(math.div($size, $columns));
   } @else {
     flex-basis: 0;
     flex-grow: 1;

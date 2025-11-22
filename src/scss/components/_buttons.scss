@@ -1,0 +1,33 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.btn-primary {
+  background-color: $color-primary;
+  color: $color-white;
+  padding: 12px 24px;
+  border-radius: $border-radius;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: $color-primary;
+  padding: 12px 24px;
+  border-radius: $border-radius;
+  font-weight: 600;
+  border: 2px solid $color-primary;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}

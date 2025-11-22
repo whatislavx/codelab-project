@@ -1,3 +1,7 @@
+@use '../abstracts/variables' as *; // <--- ДОДАНО: Підключення змінних
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *; // <--- Не забуваємо про mixins
+
 h1, h2, h3, h4, h5, h6 {
   color: $color-secondary;
   font-weight: 700;

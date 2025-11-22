@@ -5,44 +5,40 @@
         
         <section class="instructors-header">
             <h1>Meet Our Expert Instructors</h1>
-            <p>Learn from industry professionals with years of real-world experience.</p>
+            <p>Learn from industry professionals with years of real-world experience. Our instructors are passionate educators who bring practical knowledge from leading tech companies to help you succeed in your career.</p>
         </section>
 
         <section class="instructors-grid">
-            
-            <article class="instructor-card" id="alex">
-                <picture><img src="/assets/images/instructors/alex-johnson.jpg" alt="Alex Johnson"></picture>
-                <div class="instructor-info">
-                    <h2>Alex Johnson</h2>
-                    <h3>Full Stack Developer & Lead Instructor</h3>
+            <% instructors.forEach(instructor => { %>
+                <article class="instructor-card" id="<%= instructor.id %>">
+                    <picture><img src="<%= instructor.img %>" alt="<%= instructor.name %>"></picture>
+                    <div class="instructor-info">
+                        <h2><%= instructor.name %></h2>
+                        <h3><%= instructor.title %></h3>
+                        <div class="instructor-stats">
+                            <span>★<%= instructor.rating %></span>
+                            <span><%= instructor.students %> students</span>
+                            <span><%= instructor.courses %> courses</span>
+                        </div>
+                        <div class="instructor-skills">
+                            <% instructor.skills.forEach(skill => { %>
+                                <span class="skill-tag"><%= skill %></span>
+                            <% }) %>
+                        </div>
+                        <p class="instructor-bio"><%= instructor.bio %></p>
                     </div>
-            </article>
-
-            <article class="instructor-card" id="maria">
-                <picture><img src="/assets/images/instructors/maria-rodriguez.jpg" alt="Maria Rodriguez"></picture>
-                <div class="instructor-info">
-                    <h2>Maria Rodriguez</h2>
-                    <h3>Senior Frontend Developer & UI/UX Specialist</h3>
-                    </div>
-            </article>
-
-            <article class="instructor-card" id="david">
-                <picture><img src="/assets/images/instructors/david-kim.jpg" alt="David Kim"></picture>
-                <div class="instructor-info">
-                    <h2>David Kim</h2>
-                    <h3>Mobile & React Native Expert</h3>
-                    </div>
-            </article>
-
-            <article class="instructor-card" id="sarah">
-                <picture><img src="/assets/images/instructors/sarah-chen.jpg" alt="Sarah Chen"></picture>
-                <div class="instructor-info">
-                    <h2>Sarah Chen</h2>
-                    <h3>Data Science & Python Expert</h3>
-                    </div>
-            </article>
-
+                </article>
+            <% }) %>
         </section>
+
+        <nav class="pagination" aria-label="Instructors pagination">
+            <ul>
+                <li><a href="#">&lt; Previous</a></li>
+                <li><a href="#" class="active" aria-current="page">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">Next &gt;</a></li>
+            </ul>
+        </nav>
     </div>
 </main>
 
