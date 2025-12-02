@@ -4,57 +4,103 @@
 .site-footer {
   background-color: $color-secondary;
   color: $color-white;
-  padding: 48px 0 24px;
+  padding: 64px 0 24px;
   margin-top: auto;
   
-  .container {
+  .footer-columns {
     display: grid;
     gap: 32px;
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(4, 1fr);
+    
+    // Mobile first: stack columns
+    grid-template-columns: 1fr;
+    
+    @include respond-to('md') {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
     }
   }
   
-  h3 {
-    color: $color-white;
-    margin-bottom: 16px;
-    font-size: 18px;
+  .footer-column-about {
+    p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 16px;
+      max-width: 300px;
+    }
+    
+    .logo {
+      display: inline-block;
+      margin-bottom: 16px;
+      
+      img {
+        height: 32px;
+        width: auto;
+      }
+    }
   }
   
-  ul {
-    li {
-      margin-bottom: 8px;
-      a {
-        color: rgba(255, 255, 255, 0.8);
-        &:hover {
-          color: $color-white;
+  .footer-column-links {
+    h3 {
+      color: $color-white;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        margin-bottom: 12px;
+        
+        a {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 15px;
+          text-decoration: none;
+          transition: color 0.2s ease;
+          
+          &:hover {
+            color: $color-white;
+          }
         }
       }
     }
   }
   
   .footer-bottom {
-    margin-top: 32px;
-    padding-top: 24px;
+    margin-top: 64px;
+    padding-top: 32px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     @include flex(space-between, center);
     flex-wrap: wrap;
-    gap: 16px;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
+    gap: 24px;
+    
+    p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+      margin: 0;
+    }
     
     .social-links {
       @include flex(center, center);
-      gap: 16px;
+      gap: 24px;
       list-style: none;
       padding: 0;
       margin: 0;
       
-      li a {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 14px;
-        &:hover {
-          color: $color-white;
+      li {
+        a {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 14px;
+          font-weight: 500;
+          text-decoration: none;
+          transition: color 0.2s;
+          
+          &:hover {
+            color: $color-white;
+          }
         }
       }
     }

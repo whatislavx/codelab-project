@@ -10,11 +10,13 @@
                 
                 <div class="course-meta">
                     <span class="rating">
-                        ★<%= course.rating %> (<%= course.reviewsCount %> reviews)
+                        ⭐ <%= course.rating %> (<%= course.reviewsCount %> reviews)
                     </span>
-                    <span class="duration"><%= course.duration %></span>
+                    <span class="duration">
+                        ⏱️ <%= course.duration %>
+                    </span>
                     <span class="instructor">
-                        Instructor: <%= course.instructor.name %>
+                        👨‍🏫 Instructor: <%= course.instructor.name %>
                     </span>
                 </div>
             </div>
@@ -22,7 +24,7 @@
             <div class="hero-enrollment-card">
                 <div class="enrollment-price">
                     <span>Price:</span>
-                    <strong class="price-value"><%= course.price %></strong>
+                    <strong class="price-value <%= course.price === 'Free' ? 'free' : '' %>"><%= course.price %></strong>
                 </div>
                 <a href="/signup" class="btn-primary btn-enroll">Enroll now</a>
                 <ul class="course-details-list">
@@ -91,7 +93,7 @@
             <div id="curriculum" class="tab-content">
                 <h2>Course Curriculum</h2>
                 <% if (course.curriculum) { %>
-                    <p class="curriculum-summary"><%= course.curriculum.length %> modules • 20 + hours of content.</p>
+                    <p class="curriculum-summary"><%= course.curriculum.length %> modules • 20+ hours of content</p>
                     <ul class="curriculum-modules">
                         <% course.curriculum.forEach(module => { %>
                             <li class="curriculum-module <%= module.completed ? 'completed' : '' %>">

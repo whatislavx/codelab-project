@@ -4,89 +4,171 @@
 .course-details-page {
   .course-hero {
     background-color: $color-secondary;
+    background-image: linear-gradient(135deg, $color-secondary 0%, darken($color-secondary, 10%) 100%);
     color: white;
-    padding: 64px 0;
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
+
+    /* Decorative background elements */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba($color-primary, 0.2) 0%, rgba($color-primary, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
     .container {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 48px;
+      gap: 64px;
+      position: relative;
+      z-index: 1;
+      
       @include respond-to('lg') { 
-        grid-template-columns: 1fr 400px; 
-        align-items: start;
+        grid-template-columns: 1.2fr 420px; 
+        align-items: center;
       }
     }
     
     .hero-content {
       h1 { 
         color: white; 
-        font-size: 2.5rem;
-        margin-bottom: 16px;
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 24px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
       }
       p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.125rem;
-        margin-bottom: 24px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.25rem;
+        margin-bottom: 32px;
+        line-height: 1.6;
+        max-width: 600px;
       }
     }
     
     .course-level-badge {
-      display: inline-block;
-      padding: 6px 16px;
-      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: 100px;
       font-size: 14px;
       font-weight: 600;
-      background-color: #F59E0B;
-      color: white;
-      margin-bottom: 16px;
+      background-color: rgba(245, 158, 11, 0.2);
+      color: #FBBF24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      margin-bottom: 24px;
+      backdrop-filter: blur(4px);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     
     .course-meta { 
-      margin-top: 24px; 
+      margin-top: 32px; 
       @include flex(flex-start, center);
-      gap: 24px; 
+      gap: 32px; 
       flex-wrap: wrap;
-      font-size: 14px;
+      font-size: 15px;
       color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
     }
     
     .hero-enrollment-card {
-      background: #F3F4F6;
-      padding: 32px;
-      border-radius: 12px;
+      background: white;
+      padding: 40px;
+      border-radius: 24px;
       height: fit-content;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      
+      /* Floating effect */
+      transform: translateY(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+      }
       
       .enrollment-price {
         @include flex(space-between, center);
-        margin-bottom: 24px;
+        margin-bottom: 32px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #F3F4F6;
+        
         span {
-          font-size: 16px;
-          color: $color-text-main;
+          font-size: 18px;
+          color: $color-text-light;
+          font-weight: 500;
         }
         .price-value {
-          font-size: 36px;
+          font-size: 42px;
           font-weight: 800;
-          color: $color-success;
+          color: $color-secondary;
+          letter-spacing: -0.02em;
+          
+          &.free {
+            color: $color-success;
+          }
         }
       }
       
       .btn-enroll {
         width: 100%;
         margin-bottom: 32px;
-        padding: 16px;
+        padding: 18px;
         font-size: 18px;
+        font-weight: 700;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba($color-primary, 0.2);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 15px 30px rgba($color-primary, 0.3);
+        }
       }
       
       .course-details-list {
         list-style: none;
         padding: 0;
         margin: 0;
+        
         li {
           padding: 12px 0;
-          border-bottom: 1px solid #E5E7EB;
           color: $color-text-main;
-          font-size: 14px;
-          &:last-child {
-            border-bottom: none;
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          
+          &::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background-color: rgba($color-success, 0.1);
+            color: $color-success;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
           }
         }
       }
@@ -97,31 +179,49 @@
     background: white;
     border-bottom: 1px solid #E5E7EB;
     margin-top: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     
     ul {
-      @include flex(center, center);
-      gap: 0;
+      @include flex(flex-start, center);
+      gap: 8px;
       list-style: none;
-      padding: 0;
-      margin: 0;
+      padding: 0 24px;
+      margin: 0 auto;
+      max-width: 1400px;
       
       li {
         a {
           display: block;
-          padding: 16px 32px;
+          padding: 20px 24px;
           color: $color-text-light;
-          font-weight: 500;
+          font-weight: 600;
+          font-size: 16px;
           border-bottom: 3px solid transparent;
           transition: all 0.3s;
+          position: relative;
           
           &.active {
             color: $color-primary;
-            border-bottom-color: $color-primary;
-            font-weight: 600;
+            border-bottom-color: transparent;
+            
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -1px;
+              left: 0;
+              width: 100%;
+              height: 3px;
+              background-color: $color-primary;
+              border-radius: 3px 3px 0 0;
+            }
           }
           
-          &:hover {
-            color: $color-primary;
+          &:hover:not(.active) {
+            color: $color-text-main;
+            background-color: #F9FAFB;
           }
         }
       }
@@ -256,6 +356,10 @@
       font-size: 16px;
       color: $color-text-light;
       margin-bottom: 24px;
+      
+      &::before {
+        content: '';
+      }
     }
     
     .curriculum-modules {

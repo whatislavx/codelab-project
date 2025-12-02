@@ -11,13 +11,14 @@
   }
   
   .courses-filters-top {
-    @include flex(space-between, center);
+    @include flex(flex-start, flex-end);
     margin-bottom: 32px;
     gap: 16px;
     flex-wrap: wrap;
     
     .filter-dropdown {
       position: relative;
+      min-width: 340px;
       
       label {
         display: block;
@@ -27,22 +28,105 @@
         font-size: 14px;
       }
       
+      /* Hide default select */
       select {
-        padding: 10px 32px 10px 12px;
-        border: 1px solid #D1D5DB;
-        border-radius: 6px;
+        display: none;
+      }
+
+      /* Custom Select Styles */
+      .custom-select {
+        position: relative;
+        width: 100%;
         font-size: 14px;
-        background: white;
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 12px center;
+        color: $color-text-main;
         
-        &:focus {
-          outline: none;
-          border-color: $color-primary;
-          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        .select-selected {
+          background-color: #fff;
+          border-radius: 12px;
+          border: 1px solid #E5E7EB;
+          padding: 12px 16px;
+          cursor: pointer;
+          user-select: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+
+          &:hover {
+            border-color: $color-primary;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+          }
+
+          &.select-arrow-active {
+            border-color: $color-primary;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            
+            &:after {
+              transform: rotate(180deg);
+            }
+          }
+
+          &:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: transform 0.3s ease;
+          }
+        }
+
+        .select-items {
+          position: absolute;
+          background-color: #fff;
+          top: calc(100% + 8px);
+          left: 0;
+          right: 0;
+          z-index: 99;
+          border-radius: 12px;
+          border: 1px solid #E5E7EB;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+          overflow: hidden;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+          &.select-hide {
+            /* Hidden state handled by opacity/visibility above, 
+               but we need this class to toggle the state */
+          }
+          
+          &:not(.select-hide) {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+
+          div {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            color: $color-text-main;
+            border-bottom: 1px solid #F3F4F6;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            &:hover {
+              background-color: #F3F4F6;
+              color: $color-primary;
+            }
+
+            &.same-as-selected {
+              background-color: #EFF6FF;
+              color: $color-primary;
+              font-weight: 600;
+            }
+          }
         }
       }
     }
