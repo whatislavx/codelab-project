@@ -41,6 +41,10 @@
   @include respond-to('md') { max-width: 720px; }
   @include respond-to('lg') { max-width: 960px; }
   @include respond-to('xl') { max-width: 1140px; }
+  @include respond-to('xxl') { max-width: 1360px; }
+  @include respond-to('xxxl') { max-width: 1560px; }
+  @include respond-to('xxxxl') { max-width: 1760px; }
+  @include respond-to('fhd') { max-width: 2260px; }
 }
 
 @mixin make-row() {

@@ -6,19 +6,23 @@
         
         <form id="login-form" action="/login" method="POST">
             <div class="form-group">
-                <label for="email">Email adress</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email adress" required>
+                <label for="email">Email address</label>
+                <div class="input-wrapper email-wrapper">
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div class="input-wrapper password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
             </div>
             <div class="form-options">
                 <div class="checkbox-group">
                     <input type="checkbox" id="remember" name="remember">
                     <label for="remember">Remember me</label>
                 </div>
-                <a href="#">Forgot password?</a>
+                <a href="#" class="forgot-password">Forgot password?</a>
             </div>
             <button type="submit" class="btn-primary btn-full">Sign In</button>
         </form>
@@ -27,13 +31,20 @@
         </p>
     </div>
     <aside class="auth-promo">
-        <h2>Continue learning</h2>
-        <p>Access your courses, track progress, and continue building your IT skills.</p>
-        <ul class="stats-list">
-            <li><strong>150+</strong> <span>Courses</span></li>
-            <li><strong>5,000+</strong> <span>Students</span></li>
-            <li><strong>95%</strong> <span>Success rate</span></li>
-        </ul>
+        <div class="promo-content">
+            <div class="promo-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" fill="#F59E0B"/>
+                </svg>
+            </div>
+            <h2>Continue learning</h2>
+            <p>Access your courses, track progress, and continue building your IT skills.</p>
+            <ul class="stats-list">
+                <li><strong>150+</strong> <span>Courses</span></li>
+                <li><strong>5,000+</strong> <span>Students</span></li>
+                <li><strong>95%</strong> <span>Success rate</span></li>
+            </ul>
+        </div>
     </aside>
 </main>
 

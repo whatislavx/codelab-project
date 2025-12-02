@@ -3,15 +3,21 @@
 @use '../abstracts/mixins' as *;
 
 .site-header {
-  background-color: $color-white;
-  border-bottom: 1px solid #E5E7EB;
-  padding: toRem(16px) 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: toRem(20px) 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: all 0.3s ease;
 
   .container { @include flex(space-between, center); }
-  .logo img { height: 32px; }
+  
+  .logo img { 
+    height: 40px; 
+    width: auto;
+  }
 
   .main-nav {
     display: none;
@@ -19,14 +25,39 @@
       display: block;
       ul {
         @include flex(center, center);
-        gap: toRem(32px);
-        a { font-weight: 500; &:hover { color: $color-primary; } }
+        gap: toRem(40px);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+          a { 
+            font-weight: 600; 
+            font-size: 15px;
+            color: $color-text-main;
+            transition: color 0.2s ease;
+            position: relative;
+            
+            &:hover { 
+              color: $color-primary; 
+            }
+            
+            &.active {
+              color: $color-primary;
+            }
+          }
+        }
       }
     }
   }
 
   .header-buttons {
     @include flex(center, center);
-    gap: toRem(12px);
+    gap: toRem(16px);
+    
+    .btn-secondary, .btn-primary {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
   }
 }

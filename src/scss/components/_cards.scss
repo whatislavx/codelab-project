@@ -5,20 +5,29 @@
 .course-card {
   background: $color-white;
   border: 1px solid #E5E7EB;
-  border-radius: $border-radius;
+  border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   height: 100%;
   @include flex(flex-start, stretch, column);
 
-  &:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+  &:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); 
+  }
   
-  img { height: 200px; object-fit: cover; width: 100%; }
+  img { 
+    height: 200px; 
+    object-fit: cover; 
+    width: 100%; 
+    display: block;
+  }
   
   .card-content {
     padding: 24px;
     flex-grow: 1;
     @include flex(space-between, flex-start, column);
+    gap: 16px;
   }
 
   .course-level {
@@ -29,13 +38,66 @@
     font-weight: 600;
     background-color: #FEF3C7;
     color: #92400E;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+    align-self: flex-start;
   }
 
-  h3 { font-size: 18px; margin-bottom: 8px; }
+  h3 { 
+    font-size: 18px; 
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: $color-secondary;
+    line-height: 1.3;
+  }
   
-  .course-rating { color: $color-warning; font-weight: 700; font-size: 14px; margin: 12px 0; }
-  .course-price { font-size: 24px; font-weight: 800; color: $color-secondary; }
+  p {
+    font-size: 14px;
+    color: $color-text-light;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  
+  .course-rating { 
+    color: $color-warning; 
+    font-weight: 600; 
+    font-size: 14px; 
+    margin: 0;
+    
+    &::before {
+      content: '★';
+      margin-right: 4px;
+    }
+  }
+  
+  .course-price { 
+    font-size: 24px; 
+    font-weight: 800; 
+    color: $color-secondary;
+    margin-top: auto;
+    
+    &.free {
+      color: $color-success;
+    }
+  }
+  
+  .btn-details {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: $color-primary;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.3s;
+    margin-top: 8px;
+    
+    &:hover {
+      background: $color-primary-dark;
+    }
+  }
 }
 
 // Картка інструктора
